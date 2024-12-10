@@ -14,7 +14,7 @@ namespace Tyuiu.NovikovAA.Sprint5.Task0.V18.Lib
                 double y;
                 if (x + x * x <= 0)
                 {
-                    return $"Ошибка: Аргумент должен быть таким, чтобы x + x^2 > 0";
+                    return $"Ошибка: Аргумент должен быть таким, чтобы x + x^2 > 0"; 
                 }
                 y = x / Math.Sqrt(x * x + x);
 
