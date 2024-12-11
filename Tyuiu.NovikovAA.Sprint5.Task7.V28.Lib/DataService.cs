@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Text.RegularExpressions;
 using tyuiu.cources.programming.interfaces.Sprint5;
 
 
@@ -23,16 +22,31 @@ namespace Tyuiu.NovikovAA.Sprint5.Task7.V28.Lib
             using (StreamReader reader = new StreamReader(path))
             {
                 string line;
+                char previousChar = '\0';
                 while ((line = reader.ReadLine()) != null)
                 {
-                    
-                    string processedLine = Regex.Replace(line, @"\s{2,}", " ");
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        char currentChar = line[i];
 
-               
+                        if (currentChar == ' ')
+                        {
+                            // Добавляем пробел, только если предыдущий символ не был пробелом
+                            if (previousChar != ' ')
+                            {
+                                strLine += ' ';
+                            }
+                        }
+                        else
+                        {
+                            // Если текущий символ не пробел, добавляем его в строку
+                            strLine += currentChar;
+                        }
 
-                    File.AppendAllText(pathSafeFile, strLine + Environment.NewLine);
-                    strLine = "";
-                }
+
+                        File.AppendAllText(pathSafeFile, strLine + Environment.NewLine);
+                        strLine = "";
+               }    }
             }
             return pathSafeFile;
         }
