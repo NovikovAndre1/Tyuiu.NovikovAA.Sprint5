@@ -9,8 +9,8 @@ namespace Tyuiu.NovikovAA.Sprint5.Task4.V28.Lib
         {
             string str = File.ReadAllText(path);
             double x = 2.56;
-            double res = (3 * Math.Pow(x, 3)) / Math.Sin(x);
-            Math.Round(res, 3);
+            double res = Math.Round((3 * Math.Pow(x, 3)) / Math.Sin(x), 3);
+            
             return res;
         }
     }
