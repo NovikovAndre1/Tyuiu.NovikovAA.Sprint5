@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text.RegularExpressions;
 using tyuiu.cources.programming.interfaces.Sprint5;
 
 
@@ -24,13 +25,10 @@ namespace Tyuiu.NovikovAA.Sprint5.Task7.V28.Lib
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    for ( int i = 0; i < line.Length; i++)
-                    {
-                        if ((line[i] != ' '))
-                        {
-                            strLine = strLine + line[i];
-                        }
-                    }
+                    
+                    string processedLine = Regex.Replace(line, @"\s{2,}", " ");
+
+               
 
                     File.AppendAllText(pathSafeFile, strLine + Environment.NewLine);
                     strLine = "";
