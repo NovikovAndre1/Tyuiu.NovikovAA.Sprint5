@@ -8,11 +8,17 @@ namespace Tyuiu.NovikovAA.Sprint5.Task5.V9.Lib
     {
         public double LoadFromDataFile(string path)
         {
-            return File.ReadAllLines(path)
-                     .Select(line => double.Parse(line))
-                     .Select(num => Math.Round(num, 3))
-                     .Where(num => num == Math.Floor(num))
-                     .Max();
+            double maxInteger = double.MinValue;
+            foreach (string line in File.ReadAllLines(path))
+            {
+                double number = double.Parse(line);
+                double roundedNumber = Math.Round(number, 3);
+                if (roundedNumber == Math.Floor(roundedNumber))
+                {
+                    maxInteger = Math.Max(maxInteger, roundedNumber);
+                }
+            }
+            return maxInteger;
         }
     }
 }
