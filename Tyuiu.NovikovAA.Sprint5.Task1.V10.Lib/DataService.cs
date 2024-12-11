@@ -21,15 +21,19 @@ namespace Tyuiu.NovikovAA.Sprint5.Task1.V10.Lib
                 File.Delete(path);
             }
 
-            double y;
-            string strY;
             for (int x = startValue; x <= stopValue; x++)
             {
-
-                y = (2 * Math.Cos(x) + 2) / (2 * x - 1) + Math.Cos(x) - 5 * x + 3;
+                double denominator = 2.0 * x - 1;
+                double y;
+                if (denominator == 0)
+                {
+                    y = 0;
+                }
+                else
+                {
+                    y = (2 * Math.Cos(x) + 2) / denominator + Math.Cos(x) - 5 * x + 3;
+                }
                 File.AppendAllText(path, string.Format("{0:F2}", Math.Round(y, 2)) + Environment.NewLine);
-               
-
             }
             return path;
         }
