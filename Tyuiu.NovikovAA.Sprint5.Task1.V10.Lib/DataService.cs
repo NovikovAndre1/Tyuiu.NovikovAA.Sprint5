@@ -11,12 +11,12 @@ namespace Tyuiu.NovikovAA.Sprint5.Task1.V10.Lib
         {
 
 
-            string path = $@"{Directory.GetCurrentDirectory()}\OutPutFileTask1.txt";
+            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask1.txt");
 
             FileInfo fileInfo = new FileInfo(path);
             bool fileExists = fileInfo.Exists;
 
-            string filePath = Path.Combine(Path.GetTempPath(), "OutPutFileTask1.txt");
+            
 
             if (fileExists)
             {
