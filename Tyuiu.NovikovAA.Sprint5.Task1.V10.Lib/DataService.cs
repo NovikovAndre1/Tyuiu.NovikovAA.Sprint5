@@ -9,13 +9,13 @@ namespace Tyuiu.NovikovAA.Sprint5.Task1.V10.Lib
     {
         public string SaveToFileTextData(int startValue, int stopValue)
         {
-            string path = $@"{Directory.GetCurrentDirectory()}\OutPutFileTask1.txt";
+            string projectDirectory = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory)!;
+            string outputDirectory = Path.Combine(projectDirectory, "Output");
+            Directory.CreateDirectory(outputDirectory);
+            string path = Path.Combine(outputDirectory, "OutputFileTask1.txt");
 
-            FileInfo fileInfo = new FileInfo(path);
-            bool fileExists = fileInfo.Exists;
 
-
-            if (fileExists)
+            if (File.Exists(path))
             {
                 File.Delete(path);
             }
