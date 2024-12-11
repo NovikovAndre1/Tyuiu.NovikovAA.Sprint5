@@ -22,32 +22,26 @@ namespace Tyuiu.NovikovAA.Sprint5.Task7.V28.Lib
             using (StreamReader reader = new StreamReader(path))
             {
                 string line;
-                char previousChar = '\0';
+                bool spaceFound = false;
                 while ((line = reader.ReadLine()) != null)
                 {
                     for (int i = 0; i < line.Length; i++)
                     {
-                        char currentChar = line[i];
-
-                        if (currentChar == ' ')
+                        if (line[i] != ' ')
                         {
-                            // Добавляем пробел, только если предыдущий символ не был пробелом
-                            if (previousChar != ' ')
-                            {
-                                strLine += ' ';
-                            }
+                            strLine += line[i]; // Добавляем символ, если он не пробел
+                            spaceFound = false; // Сбрасываем флаг пробела
                         }
-                        else
+                        else if (!spaceFound) // Если встречаем пробел и ранее пробел не был найден
                         {
-                            // Если текущий символ не пробел, добавляем его в строку
-                            strLine += currentChar;
+                            strLine += ' '; // Добавляем один пробел
+                            spaceFound = true; // Устанавливаем флаг пробела
                         }
+                    }
 
-                        previousChar = currentChar;
-
-                        File.AppendAllText(pathSafeFile, strLine + Environment.NewLine);
-                        strLine = "";
-               }    }
+                    File.AppendAllText(pathSafeFile, strLine + Environment.NewLine);
+                    strLine = "";
+                }
             }
             return pathSafeFile;
         }
