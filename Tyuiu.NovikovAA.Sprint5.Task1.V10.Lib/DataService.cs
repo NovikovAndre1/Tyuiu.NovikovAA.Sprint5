@@ -26,7 +26,7 @@ namespace Tyuiu.NovikovAA.Sprint5.Task1.V10.Lib
             for (int x = startValue; x <= stopValue; x++)
             {
                 y = (2 * Math.Cos(x) + 2) / (2 * x - 1) + Math.Cos(x) - 5 * x + 3;
-                string formattedY = string.Format("{0:F2}", Math.Round(y, 2));
+                string formattedY = string.Format("{0:F2}", Math.Round(y, 2)); 
                 strY = Convert.ToString(y);
 
                 if (x != stopValue)
