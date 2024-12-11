@@ -8,17 +8,16 @@ namespace Tyuiu.NovikovAA.Sprint5.Task5.V9.Lib
     {
         public double LoadFromDataFile(string path)
         {
-            double maxInteger = double.MinValue;
-            foreach (string line in File.ReadAllLines(path))
+            double res = 0;
+            using (StreamReader reader = new StreamReader(path))
             {
-                double number = double.Parse(line);
-                double roundedNumber = Math.Round(number, 3);
-                if (roundedNumber == Math.Floor(roundedNumber))
+                string line;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    maxInteger = Math.Max(maxInteger, roundedNumber);
+                    res = res + Convert.ToDouble(line);
                 }
             }
-            return maxInteger;
+            return res;
         }
     }
 }
