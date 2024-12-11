@@ -14,6 +14,7 @@ namespace Tyuiu.NovikovAA.Sprint5.Task1.V10.Lib
             Directory.CreateDirectory(outputDirectory);
             string path = Path.Combine(outputDirectory, "OutputFileTask1.txt");
 
+            using (StreamWriter writer = new StreamWriter(path))
 
             if (File.Exists(path))
             {
