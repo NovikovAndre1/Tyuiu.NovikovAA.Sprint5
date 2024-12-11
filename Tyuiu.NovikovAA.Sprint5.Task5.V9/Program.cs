@@ -13,7 +13,7 @@ namespace Tyuiu.NovikovAA.Sprint5.Task5.V9
             Console.WriteLine("********************************************************************");
 
 
-            string path = Path.Combine(Path.GetTempPath(), "InPutDataFileTask4V28.txt");
+            string path = Path.Combine(Path.GetTempPath(), "InPutDataFileTask5V9.txt");
 
             Console.WriteLine("Данные находятся в файле: " + path);
             Console.WriteLine("********************************************************************");

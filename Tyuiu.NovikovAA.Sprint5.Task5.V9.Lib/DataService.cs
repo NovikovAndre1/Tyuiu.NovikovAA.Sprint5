@@ -8,16 +8,28 @@ namespace Tyuiu.NovikovAA.Sprint5.Task5.V9.Lib
     {
         public double LoadFromDataFile(string path)
         {
-            double res = 0;
+            double maxValue = double.MinValue;
+
             using (StreamReader reader = new StreamReader(path))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    res = res + Convert.ToDouble(line);
+                    if (!string.IsNullOrWhiteSpace(line))
+                    {
+                        // Преобразуем строку в число
+                        double value = Math.Round(Convert.ToDouble(line), 3);
+
+                        // Проверяем, является ли текущее значение максимальным
+                        if (value > maxValue)
+                        {
+                            maxValue = value;
+                        }
+                    }
                 }
             }
-            return res;
+            return maxValue;
+
         }
     }
 }
