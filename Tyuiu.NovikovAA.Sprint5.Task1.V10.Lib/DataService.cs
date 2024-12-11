@@ -16,7 +16,7 @@ namespace Tyuiu.NovikovAA.Sprint5.Task1.V10.Lib
             FileInfo fileInfo = new FileInfo(path);
             bool fileExists = fileInfo.Exists;
             
-            if (fileExists)
+            if (fileExists) 
             {
                 File.Delete(path);
             }
