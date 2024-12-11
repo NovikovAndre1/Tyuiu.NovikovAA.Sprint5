@@ -43,6 +43,7 @@ namespace Tyuiu.NovikovAA.Sprint5.Task7.V28.Lib
                             strLine += currentChar;
                         }
 
+                        previousChar = currentChar;
 
                         File.AppendAllText(pathSafeFile, strLine + Environment.NewLine);
                         strLine = "";
