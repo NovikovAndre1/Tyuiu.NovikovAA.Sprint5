@@ -8,28 +8,39 @@ namespace Tyuiu.NovikovAA.Sprint5.Task5.V9.Lib
     {
         public double LoadFromDataFile(string path)
         {
+            // Путь к файлу
+            string filePath = "/app/data/AssesmentData/C#/Sprint5Task5/InPutDataFileTask5V9.txt";
+
+            // Переменная для хранения максимального значения
             double maxValue = double.MinValue;
 
-            using (StreamReader reader = new StreamReader(path))
+            using (StreamReader reader = new StreamReader(filePath))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     if (!string.IsNullOrWhiteSpace(line))
                     {
-                        // Преобразуем строку в число
-                        double value = Math.Round(Convert.ToDouble(line), 3);
+                        // Разбиваем строку на отдельные элементы
+                        var values = line.Split(' ');
 
-                        // Проверяем, является ли текущее значение максимальным
-                        if (value > maxValue)
+                        foreach (var valueStr in values)
                         {
-                            maxValue = value;
+                            // Преобразуем строку в число
+                            double value = Math.Round(Convert.ToDouble(valueStr), 3);
+
+                            // Проверяем, является ли текущее значение максимальным
+                            if (value > maxValue)
+                            {
+                                maxValue = value;
+                            }
                         }
                     }
                 }
             }
             return maxValue;
-
+            // Выводим найденное максимальное значение
+            Console.WriteLine($"Максимальное значение: {maxValue}");
         }
     }
 }
