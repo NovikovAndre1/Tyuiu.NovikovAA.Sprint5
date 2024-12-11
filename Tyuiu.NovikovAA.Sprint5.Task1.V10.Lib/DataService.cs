@@ -14,8 +14,11 @@ namespace Tyuiu.NovikovAA.Sprint5.Task1.V10.Lib
 
             string path = Path.Combine(outputDirectory, "OutputFileTask1.txt");
 
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
 
-            
             double y;
             string strY;
             for (int x = startValue; x <= stopValue; x++)
