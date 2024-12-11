@@ -9,7 +9,7 @@ namespace Tyuiu.NovikovAA.Sprint5.Task5.V9.Lib
     {
         public double LoadFromDataFile(string path)
         {
-            double result = double.MinValue;
+            int maxInteger = int.MinValue;
 
             using (StreamReader reader = new StreamReader(path))
             {
@@ -24,19 +24,23 @@ namespace Tyuiu.NovikovAA.Sprint5.Task5.V9.Lib
                         foreach (var valueStr in values)
                         {
                             // Преобразуем строку в число, используя InvariantCulture
-                            double value = Math.Round(double.Parse(valueStr, CultureInfo.InvariantCulture), 3);
+                            double value = double.Parse(valueStr, CultureInfo.InvariantCulture);
 
-                            // Проверяем, является ли текущее значение максимальным
-                            if (value > result)
+                            // Проверяем, является ли число целым
+                            if (value == Math.Truncate(value)) // Целое число, если дробная часть равна нулю
                             {
-                                result = value;
+                                int integerValue = (int)value;
+                                if (integerValue > maxInteger)
+                                {
+                                    maxInteger = integerValue;
+                                }
                             }
                         }
                     }
                 }
             }
 
-            return result;
+            return maxInteger;
         }
     }
 }
