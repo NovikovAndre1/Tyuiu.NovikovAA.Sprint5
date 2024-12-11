@@ -25,9 +25,25 @@ namespace Tyuiu.NovikovAA.Sprint5.Task1.V10.Lib
             string strY;
             for (int x = startValue; x <= stopValue; x++)
             {
+                double denominator = (2 * x - 1);
+                if (denominator == 0)
+                {
+                    y = 0;
+                    File.AppendAllText(path, "0" + Environment.NewLine);
+                }
+
                 y = (2 * Math.Cos(x) + 2) / (2 * x - 1) + Math.Cos(x) - 5 * x + 3;
                 File.AppendAllText(path, string.Format("{0:F2}", Math.Round(y, 2)) + Environment.NewLine);
-               
+                strY = Convert.ToString(y);
+
+                if (x != stopValue)
+                {
+                    File.AppendAllText(path, strY + Environment.NewLine);
+                }
+                else
+                {
+                    File.AppendAllText(path, strY);
+                }
             }
             return path;
         }
