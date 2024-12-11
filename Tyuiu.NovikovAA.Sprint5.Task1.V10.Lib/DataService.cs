@@ -9,17 +9,21 @@ namespace Tyuiu.NovikovAA.Sprint5.Task1.V10.Lib
     {
         public string SaveToFileTextData(int startValue, int stopValue)
         {
+
+
             string path = $@"{Directory.GetCurrentDirectory()}\OutPutFileTask1.txt";
 
             FileInfo fileInfo = new FileInfo(path);
             bool fileExists = fileInfo.Exists;
 
-
+            string filePath = Path.Combine(Path.GetTempPath(), "OutPutFileTask1.txt");
 
             if (fileExists)
             {
                 File.Delete(path);
             }
+
+
 
             double y;
             string strY;
