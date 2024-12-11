@@ -10,11 +10,18 @@ namespace Tyuiu.NovikovAA.Sprint5.Task6.V6.Lib
         {
             int count = 0;
 
-            foreach (char c in path)
+            using (StreamReader reader = new StreamReader(path))
             {
-                if ('а' <= c && c <= 'я') // Проверка, является ли символ строчной русской буквой
+                string line;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    count++;
+                    foreach (char c in line)
+                    {
+                        if ('а' <= c && c <= 'я') 
+                        {
+                            count++;
+                        }
+                    }
                 }
             }
 
